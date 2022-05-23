@@ -248,8 +248,8 @@ function onSubmitSearchPlayer() {
         },
         success: (response) => {
 
-            console.log(response)
-            return
+            // console.log(response)
+            // return
 
             let totalPage = Math.ceil(response.total / PAGE_LENGTH);
             let currentPage = 1
@@ -262,8 +262,8 @@ function onSubmitSearchPlayer() {
                     getPlayerPageData(page, PAGE_LENGTH);
                 }
             })
-            managePlayerTableHeader("#advanced-search-table-content thead")
-            managePlayerRow("#advanced-search-table-content tbody", response.data);
+            setPlayerTableHeader("table-content thead")
+            managePlayerRow("table-content tbody", response.data);
         },
         error: (jqXHR, textStatus, errorThrown) => {
             console.log(textStatus);
@@ -425,7 +425,7 @@ function manageClubData(page, pageSize) {
                     getClubPageData(page, pageSize);
                 }
             })
-            manageClubRow(response.data);
+            setClubRow(response.data);
         },
         error: (jqXHR, textStatus, errorThrown) => {
             console.log(textStatus);
@@ -443,17 +443,17 @@ function getClubPageData(page, pageSize) {
             pageSize: pageSize
         }
     }).done((data) => {
-        manageClubRow(data.data);
+        setClubRow(data.data);
     })
 }
 
-function manageClubTableHeader() {
-    let header = "<tr><td>Club ID</td><td>Club Name</td><td>Short name</td><td>Stadium ID</td><td>Coach ID</td></tr>";
+function setClubTableHeader() {
+    let header = "<tr><th>Club ID</th><th>Club Name</th><th>Short name</th><th>Stadium ID</th><th>Coach ID</th></tr>";
     $("#table-content thead").html(header);
 }
 
-function manageClubRow(data) {
-    manageClubTableHeader();
+function setClubRow(data) {
+    setClubTableHeader();
 
     let rows = "";
     $.each(data, (index) => {
@@ -507,12 +507,12 @@ function getPlayerPageData(page, pageSize) {
             pageSize: pageSize
         }
     }).done((data) => {
-        managePlayerTableHeader("#table-content thead")
+        setPlayerTableHeader("#table-content thead")
         managePlayerRow("#table-content tbody", data.data);
     })
 }
 
-function managePlayerTableHeader(selector) {
+function setPlayerTableHeader(selector) {
     let header = "<tr><th>Player ID</th><th>Full Name</th><th>Club ID</th><th>Date of birth</th><th>Position</th><th>Nationality</th><th>Number</th></tr>";
     $(selector).html(header);
 }

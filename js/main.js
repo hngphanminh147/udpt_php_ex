@@ -21,7 +21,7 @@ $(document).ready(($) => {
 
     $("#nav-player-search").click(() => {
         $("#page-content").load("view/component/searchLayout.php")
-        managePlayerTableHeader("#advanced-search-table-content thead")
+        setPlayerTableHeader("#table-content thead")
         prepareFormClub()
     })
 

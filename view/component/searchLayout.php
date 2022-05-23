@@ -20,8 +20,18 @@
     <button id="btn-search-player" type="submit" onclick="onSubmitSearchPlayer()">Search player</button>
 </form>
 <div class="table">
-    <table id="advanced-search-table-content">
-        <thead></thead>
+    <table id="table-content">
+        <thead>
+            <tr>
+                <th>Player ID</th>
+                <th>Full Name</th>
+                <th>Club ID</th>
+                <th>Date of birth</th>
+                <th>Position</th>
+                <th>Nationality</th>
+                <th>Number</th>
+            </tr>
+        </thead>
         <tbody></tbody>
     </table>
 </div>
